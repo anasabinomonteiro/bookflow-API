@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/anasabinomonteiro/bookflow-API/issues"
   },
-  "homepage": "https://github.com/anasabinomonteiro/bookflow-API#readme"
+  "homepage": "https://github.com/anasabinomonteiro/bookflow-API#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
