@@ -1,0 +1,21 @@
+{
+  "name": "bookflow-api",
+  "version": "1.0.0",
+  "description": "API for managing books and users - BookFlow Project Team 14.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anasabinomonteiro/bookflow-API.git"
+  },
+  "keywords": [],
+  "author": "Ana Lucia da Silva Monteiro, Estefania Sagrario Ortíz Ramírez, Bimbola Peace Osho-Lowu, Liam Nell",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/anasabinomonteiro/bookflow-API/issues"
+  },
+  "homepage": "https://github.com/anasabinomonteiro/bookflow-API#readme"
+}
