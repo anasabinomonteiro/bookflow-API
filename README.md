@@ -7,8 +7,8 @@ MongoDb = mongodb+srv://bimbola:bimbo1234@cluster0.2hqiaum.mongodb.net/bookflow
 Github: https://github.com/anasabinomonteiro/bookflow-API
 
 Team: 
-Ana Lucia da Silva Monteiro
-Bimbola Peace Osho-Lowu
-Estefania Sagrario Ortiz Ramirez
-Liam Nell
+Ana Lucia da Silva Monteiro ***
+Bimbola Peace Osho-Lowu ***
+Estefania Sagrario Ortiz Ramirez ***
+Liam Nell ***
 
