@@ -26,7 +26,7 @@
         "tags": [
           "Authors"
         ],
-        "description": "",
+        "description": "Retrieve all authors",
         "responses": {
           "200": {
             "description": "OK"
@@ -43,33 +43,63 @@
         "description": "",
         "parameters": [
           {
-            "name": "body",
+            "name": "author",
             "in": "body",
+            "description": "Author object to be created",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "author_first_name": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "John"
                 },
                 "author_last_name": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Doe"
                 },
-                "author_birthday": {
-                  "example": "any"
+                "author_birthdate": {
+                  "type": "string",
+                  "example": "1980-01-01"
                 },
                 "author_nationality": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "American"
                 },
                 "author_awards": {
-                  "example": "any"
+                  "type": "array",
+                  "example": [
+                    "Best Author 2020"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "author_books": {
-                  "example": "any"
+                  "type": "array",
+                  "example": [],
+                  "items": {}
                 },
                 "author_genres": {
-                  "example": "any"
+                  "type": "array",
+                  "example": [
+                    "Fiction",
+                    "Mystery"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
                 }
-              }
+              },
+              "required": [
+                "author_first_name",
+                "author_last_name",
+                "author_birthdate",
+                "author_nationality",
+                "author_awards",
+                "author_books",
+                "author_genres"
+              ]
             }
           }
         ],
@@ -97,7 +127,8 @@
             "name": "book_id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the book to retrieve"
           }
         ],
         "responses": {
@@ -122,7 +153,8 @@
             "name": "book_id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the book to update"
           },
           {
             "name": "book_id",
@@ -155,7 +187,8 @@
             "name": "book_id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the book to delete"
           },
           {
             "name": "book_id",
@@ -190,7 +223,8 @@
             "name": "author_id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the author to retrieve"
           }
         ],
         "responses": {
@@ -215,7 +249,8 @@
             "name": "author_id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the author to update"
           }
         ],
         "responses": {
@@ -243,7 +278,8 @@
             "name": "author_id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the author to delete"
           }
         ],
         "responses": {
