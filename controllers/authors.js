@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     const author = new Author({
         author_first_name: req.body.author_first_name,
         author_last_name: req.body.author_last_name,
-        author_birthday: req.body.author_birthday,
+        author_birthdate: req.body.author_birthdate,
         author_nationality: req.body.author_nationality,
         author_awards: req.body.author_awards,
         author_books: req.body.author_books,
