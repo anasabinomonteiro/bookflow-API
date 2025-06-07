@@ -23,6 +23,8 @@ app
 // Swagger configuration
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
+app.use('/', require('./routes'));
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

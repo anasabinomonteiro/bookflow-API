@@ -7,17 +7,17 @@ router.get('/', (req, res) => {
 });
 
 // Book Routes
-router.get('/', books.findAll);
-router.get('/:book_id', books.findOne);
-router.post('/', books.create);
-router.put('/:book_id', books.updateBook);
-router.delete('/:book_id', books.deleteBook);
+router.get('/books', books.findAll);
+router.get('/books/:book_id', books.findOne);
+router.post('/books', books.create);
+router.put('/books/:book_id', books.updateBook);
+router.delete('/books/:book_id', books.deleteBook);
 
 // Author Routes
-router.get('/', authors.findAll);
-router.get('/:author_id', authors.findOne);
-router.post('/', authors.create);
-router.put('/:author_id', authors.updateAuthor);
-router.delete('/:author_id', authors.deleteAuthor);
+router.get('/authors', authors.findAll);
+router.get('/authors/:author_id', authors.findOne);
+router.post('/authors', authors.create);
+router.put('/authors/:author_id', authors.updateAuthor);
+router.delete('/authors/:author_id', authors.deleteAuthor);
 
 module.exports = router;
