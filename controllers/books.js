@@ -127,14 +127,14 @@ exports.deleteBook = async (req, res) => {
     }
 
     try {
-        // find and delete the project by ID
+        // find and delete the book by ID
         const result = await Book.findByIdAndDelete(book_id);
 
         if (!result) {
             return res.status(404).send({ message: "No book found with id: " + book_id })
         }
 
-        // Successfully deleted the project
+        // Successfully deleted the book
         res.status(200).send({ message: "Book deleted successfull"
         })
 
