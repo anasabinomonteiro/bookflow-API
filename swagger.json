@@ -5,7 +5,7 @@
     "description": "API for managing bookflow operations",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "bookflow-api-fgiu.onrender.com/api-docs/",
   "basePath": "/",
   "tags": [
     {
@@ -18,7 +18,7 @@
     }
   ],
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
