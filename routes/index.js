@@ -13,7 +13,7 @@ router.get('/books',
 
 router.get('/books/:book_id',
   /* #swagger.tags=["Books"] */
-  /* #swagger.parameters['book_id'] = { description: 'ID of the book to retrieve' } */
+  /* #swagger.parameters['book_id'] = { description: 'ID of the book to retrieve', type: 'string' } */
   books.findOne);
 
 router.post('/books',
@@ -23,25 +23,44 @@ router.post('/books',
       description: 'Book object to be created',
       required: true,
       schema: {
-          $book_name: 'The Great Gatsby',
-          $book_author: 'F. Scott Fitzgerald',
-          $book_genre: 'Fiction',
-          $book_summary: 'A novel set in the 1920s about the mysterious Jay Gatsby.',
-          $book_published: '1925-04-10',
-          $book_isbn: '9780743273565',
-          $book_pages: 180
+          $book_name: 'Book test two',
+          $book_author: 'Ana Monteiro',
+          $book_genre: 'Mistery',
+          $book_summary: 'This is the summary for a test book 2.',
+          $book_published: '2025',
+          $book_isbn: 'adjfklasdjfkl2893812',
+          $book_pages: 500
       }
   } */
   books.create);
 
 router.put('/books/:book_id',
   /* #swagger.tags=["Books"] */
-  /* #swagger.parameters['book_id'] = { description: 'ID of the book to update' } */
+  /* #swagger.parameters['book_id'] = { 
+      in: 'path',
+      description: 'ID of the book to update',
+      type: 'string',
+      required: true
+  } */
+  /* #swagger.parameters['book_data'] = { 
+      in: 'body',
+      description: 'Book object to be updated',
+      required: true,
+      schema: {
+          $book_name: 'Updated Book Name',
+          $book_author: 'Updated Author',
+          $book_genre: 'Updated Genre',
+          $book_summary: 'Updated summary for the book.',
+          $book_published: '2025',
+          $book_isbn: 'updatedisbn123456',
+          $book_pages: 600
+      }
+  } */
   books.updateBook);
 
 router.delete('/books/:book_id',
   /* #swagger.tags=["Books"] */
-  /* #swagger.parameters['book_id'] = { description: 'ID of the book to delete' } */
+  /* #swagger.parameters['book_id'] = { description: 'ID of the book to delete', type: 'string' } */
   books.deleteBook);
 
 // Author Routes
@@ -52,7 +71,7 @@ router.get('/authors',
 
 router.get('/authors/:author_id',
   /* #swagger.tags=["Authors"] */
-  /* #swagger.parameters['author_id'] = { description: 'ID of the author to retrieve' } */
+  /* #swagger.parameters['author_id'] = { description: 'ID of the author to retrieve', type: 'string' } */
   authors.findOne);
 
 router.post('/authors',
@@ -64,10 +83,10 @@ router.post('/authors',
       schema: {
           $author_first_name: 'John',
           $author_last_name: 'Doe',
-          $author_birthdate: '1980-01-01',
+          $author_birthdate: '1980',
           $author_nationality: 'American',
           $author_awards: ['Best Author 2020'],
-          $author_books: [],
+          $author_books: ['John Doe\'s Book'], 
           $author_genres: ['Fiction', 'Mystery']
       }
   } */
@@ -75,12 +94,31 @@ router.post('/authors',
 
 router.put('/authors/:author_id',
   /* #swagger.tags=["Authors"] */
-  /* #swagger.parameters['author_id'] = { description: 'ID of the author to update' } */
+  /* #swagger.parameters['author_id'] = {
+      in: 'path',
+      description: 'ID of the author to update',
+      type: 'string',
+      required: true
+  } */
+  /* #swagger.parameters['author_data'] = { 
+      in: 'body',
+      description: 'Author object to be updated',
+      required: true,
+      schema: {
+          $author_first_name: 'Updated First Name',
+          $author_last_name: 'Updated Last Name',
+          $author_birthdate: '1985',
+          $author_nationality: 'British',
+          $author_awards: ['Best Author 2021'],
+          $author_books: ['Updated Book Name'], 
+          $author_genres: ['Non-Fiction', 'Science']
+      }
+  } */
   authors.updateAuthor);
 
 router.delete('/authors/:author_id',
   /* #swagger.tags=["Authors"] */
-  /* #swagger.parameters['author_id'] = { description: 'ID of the author to delete' } */
+  /* #swagger.parameters['author_id'] = { description: 'ID of the author to delete', type: 'string' } */
   authors.deleteAuthor);
 
 module.exports = router;
