@@ -6,7 +6,7 @@ exports.create = (req, res) => {
     // #swagger.tags=["Authors"]
     // Validate request
     if (!req.body.author_first_name || !req.body.author_last_name) {
-        res.status(400).send({ message: "Please include the author's first and last name."})
+        res.status(400).send({ message: "Please include the author's first and last name." })
         return;
     }
 
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     const author = new Author({
         author_first_name: req.body.author_first_name,
         author_last_name: req.body.author_last_name,
-        author_birthday: req.body.author_birthday,
+        author_birthdate: req.body.author_birthdate,
         author_nationality: req.body.author_nationality,
         author_awards: req.body.author_awards,
         author_books: req.body.author_books,
@@ -30,7 +30,7 @@ exports.create = (req, res) => {
         .catch((err) => {
             res.status(500).send({
                 message:
-                err.message || 'An error occured while creating the author.'
+                    err.message || 'An error occured while creating the author.'
             });
         });
 };
@@ -49,7 +49,7 @@ exports.findAll = (req, res) => {
             author_genres: 1,
         }
     )
-        .then ((data) => {
+        .then((data) => {
             res.send(data);
         })
         .catch((err) => {
@@ -65,18 +65,18 @@ exports.findOne = (req, res) => {
     // #swagger.tags=["Authors"]
     const author_id = req.params.author_id;
     Author.findById(author_id)
-    .then((data) => {
-        if (!data)
-            res
-            .status(404)
-            .send({ message: "No author found with id " + author_id });
-        else res.send(data);
-    })
-    .catch((err) => {
-        res.status(500).send({
-            message: "Error retrieving Author with author_id " + author_id,
+        .then((data) => {
+            if (!data)
+                res
+                    .status(404)
+                    .send({ message: "No author found with id " + author_id });
+            else res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: "Error retrieving Author with author_id " + author_id,
+            });
         });
-    });
 };
 
 // update an existing author
@@ -91,7 +91,7 @@ exports.updateAuthor = (req, res) => {
 
     // validate book_id
     if (!mongoose.Types.ObjectId.isValid(author_id)) {
-        return res.status(400).send({ message: "Invalid author ID!"});
+        return res.status(400).send({ message: "Invalid author ID!" });
     }
 
     // Use findByIdAndUpdate to update one author
@@ -103,7 +103,7 @@ exports.updateAuthor = (req, res) => {
         .then((data) => {
             if (!data) {
                 // if no author was found with the provided ID
-                return res.status(404).send({ message: 'No author found with id: ' + author_id});
+                return res.status(404).send({ message: 'No author found with id: ' + author_id });
             }
             // Successfully updated the author, return the updated document
             res.send(data);
@@ -123,7 +123,7 @@ exports.deleteAuthor = async (req, res) => {
     }
 
     if (!mongoose.Types.ObjectId.isValid(author_id)) {
-        return res.status(400).send({ message: "Invalid author ID!"})
+        return res.status(400).send({ message: "Invalid author ID!" })
     }
 
     try {
@@ -135,7 +135,8 @@ exports.deleteAuthor = async (req, res) => {
         }
 
         // Successfully deleted the project
-        res.status(200).send({ message: "Author deleted successfully"
+        res.status(200).send({
+            message: "Author deleted successfully"
         })
 
     } catch (err) {
