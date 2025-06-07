@@ -200,14 +200,53 @@
             "schema": {
               "type": "object",
               "properties": {
-                "author_first_name": { "example": "any" },
-                "author_last_name": { "example": "any" },
-                "author_birthday": { "example": "any" },
-                "author_nationality": { "example": "any" },
-                "author_awards": { "example": "any" },
-                "author_books": { "example": "any" },
-                "author_genres": { "example": "any" }
-              }
+                "author_first_name": {
+                  "type": "string",
+                  "description": "The first name of the author.",
+                  "example": "John"
+                },
+                "author_last_name": {
+                  "type": "string",
+                  "description": "The last name of the author.",
+                  "example": "Doe"
+                },
+                "author_birthday": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "The birthdate of the author in YYYY-MM-DD format. Must be a past date.",
+                  "example": "1980-05-15"
+                },
+                "author_nationality": {
+                  "type": "string",
+                  "description": "The nationality of the author.",
+                  "example": "American"
+                },
+                "author_awards": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "A list of awards the author has received.",
+                  "example": ["Pulitzer Prize", "National Book Award"]
+                },
+                "author_books": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "A list of book IDs authored by this author.",
+                  "example": ["60d21b4667d0d8992e610c85", "60d21b4667d0d8992e610c86"]
+                },
+                "author_genres": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "A list of genres the author specializes in.",
+                  "example": ["Fiction", "Drama"]
+                }
+              },
+              "required": ["author_first_name", "author_last_name", "author_birthday"]
             }
           }
         ],
