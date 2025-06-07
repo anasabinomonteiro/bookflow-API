@@ -7,16 +7,16 @@ router.get('/', (req, res) => {
 });
 
 // Book Routes
-router.get('/',
+router.get('/books',
   /* #swagger.tags=["Books"] */
   books.findAll);
 
-router.get('/:book_id',
+router.get('/books/:book_id',
   /* #swagger.tags=["Books"] */
   /* #swagger.parameters['book_id'] = { description: 'ID of the book to retrieve' } */
   books.findOne);
 
-router.post('/',
+router.post('/books',
   /* #swagger.tags=["Books"] */
   /* #swagger.parameters['book'] = {
       in: 'body',
@@ -34,28 +34,28 @@ router.post('/',
   } */
   books.create);
 
-router.put('/:book_id',
+router.put('/books/:book_id',
   /* #swagger.tags=["Books"] */
   /* #swagger.parameters['book_id'] = { description: 'ID of the book to update' } */
   books.updateBook);
 
-router.delete('/:book_id',
+router.delete('/books/:book_id',
   /* #swagger.tags=["Books"] */
   /* #swagger.parameters['book_id'] = { description: 'ID of the book to delete' } */
   books.deleteBook);
 
 // Author Routes
-router.get('/',
+router.get('/authors',
   /* #swagger.tags=["Authors"] */
   /* #swagger.description = 'Retrieve all authors' */
   authors.findAll);
 
-router.get('/:author_id',
+router.get('/authors/:author_id',
   /* #swagger.tags=["Authors"] */
   /* #swagger.parameters['author_id'] = { description: 'ID of the author to retrieve' } */
   authors.findOne);
 
-router.post('/',
+router.post('/authors',
   /* #swagger.tags=["Authors"] */
   /* #swagger.parameters['author'] = {
       in: 'body',
@@ -73,12 +73,12 @@ router.post('/',
   } */
   authors.create);
 
-router.put('/:author_id',
+router.put('/authors/:author_id',
   /* #swagger.tags=["Authors"] */
   /* #swagger.parameters['author_id'] = { description: 'ID of the author to update' } */
   authors.updateAuthor);
 
-router.delete('/:author_id',
+router.delete('/authors/:author_id',
   /* #swagger.tags=["Authors"] */
   /* #swagger.parameters['author_id'] = { description: 'ID of the author to delete' } */
   authors.deleteAuthor);

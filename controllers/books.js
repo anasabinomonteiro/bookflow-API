@@ -82,7 +82,7 @@ exports.findOne = (req, res) => {
 // update an existing book
 exports.updateBook = (req, res) => {
     // #swagger.tags=["Books"]
-    const book_id = req.header('book_id');
+    const book_id = req.params.book_id
 
     // validate request body
     if (!book_id) {
@@ -117,7 +117,7 @@ exports.updateBook = (req, res) => {
 
 exports.deleteBook = async (req, res) => {
     // #swagger.tags=["Books"]
-    const book_id = req.header("book_id");
+    const book_id = req.params.book_id;
     if (!book_id) {
         return res.status(400).send({ message: "Please include a book ID!" })
     }

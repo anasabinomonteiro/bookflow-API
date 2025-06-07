@@ -23,8 +23,18 @@
   "paths": {
     "/": {
       "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/books": {
+      "get": {
         "tags": [
-          "Authors"
+          "Books"
         ],
         "description": "Retrieve all authors",
         "responses": {
@@ -38,7 +48,7 @@
       },
       "post": {
         "tags": [
-          "Authors"
+          "Books"
         ],
         "description": "",
         "parameters": [
@@ -68,27 +78,24 @@
                 },
                 "author_awards": {
                   "type": "array",
-                  "example": [
-                    "Best Author 2020"
-                  ],
                   "items": {
                     "type": "string"
-                  }
+                  },
+                  "example": ["Best Author 2020"]
                 },
                 "author_books": {
                   "type": "array",
-                  "example": [],
-                  "items": {}
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": []
                 },
                 "author_genres": {
                   "type": "array",
-                  "example": [
-                    "Fiction",
-                    "Mystery"
-                  ],
                   "items": {
                     "type": "string"
-                  }
+                  },
+                  "example": ["Fiction", "Mystery"]
                 }
               },
               "required": [
@@ -116,11 +123,9 @@
         }
       }
     },
-    "/{book_id}": {
+    "/books/{book_id}": {
       "get": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "description": "",
         "parameters": [
           {
@@ -132,21 +137,13 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": { "description": "OK" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Internal Server Error" }
         }
       },
       "put": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "description": "",
         "parameters": [
           {
@@ -155,32 +152,17 @@
             "required": true,
             "type": "string",
             "description": "ID of the book to update"
-          },
-          {
-            "name": "book_id",
-            "in": "header",
-            "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Internal Server Error" }
         }
       },
       "delete": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "description": "",
         "parameters": [
           {
@@ -189,34 +171,56 @@
             "required": true,
             "type": "string",
             "description": "ID of the book to delete"
-          },
-          {
-            "name": "book_id",
-            "in": "header",
-            "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Internal Server Error" }
         }
       }
     },
-    "/{author_id}": {
+    "/authors": {
       "get": {
-        "tags": [
-          "Authors"
+        "tags": ["Authors"],
+        "description": "",
+        "responses": {
+          "200": { "description": "OK" },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "post": {
+        "tags": ["Authors"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "author_first_name": { "example": "any" },
+                "author_last_name": { "example": "any" },
+                "author_birthday": { "example": "any" },
+                "author_nationality": { "example": "any" },
+                "author_awards": { "example": "any" },
+                "author_books": { "example": "any" },
+                "author_genres": { "example": "any" }
+              }
+            }
+          }
         ],
+        "responses": {
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    },
+    "/authors/{author_id}": {
+      "get": {
+        "tags": ["Authors"],
         "description": "",
         "parameters": [
           {
@@ -228,21 +232,13 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": { "description": "OK" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Internal Server Error" }
         }
       },
       "put": {
-        "tags": [
-          "Authors"
-        ],
+        "tags": ["Authors"],
         "description": "",
         "parameters": [
           {
@@ -254,24 +250,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Internal Server Error" }
         }
       },
       "delete": {
-        "tags": [
-          "Authors"
-        ],
+        "tags": ["Authors"],
         "description": "",
         "parameters": [
           {
@@ -283,18 +269,10 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" },
+          "500": { "description": "Internal Server Error" }
         }
       }
     }
