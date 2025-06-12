@@ -10,10 +10,7 @@ const port = process.env.PORT || 3000;
 // Connect to MongoDB
 const db = require('./models');
 db.mongoose
-  .connect(db.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(db.url) // ⬅️ Deprecated options removed
   .then(() => {
     console.log('Connected to the database!');
   })
@@ -24,25 +21,25 @@ db.mongoose
 
 app
   .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Headers',
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+      'Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
     );
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next()
+    res.setHeader(
+      'Access-Control-Allow-Methods',
+      'GET, POST, PUT, DELETE, OPTIONS'
+    );
+    next();
   })
   .use(cors())
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
-  .use('/', require('./routes'));
+  .use('/', require('./routes')); // ✅ Only once
 
 // Swagger configuration
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-app.use('/', require('./routes'));
-
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
