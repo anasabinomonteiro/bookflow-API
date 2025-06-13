@@ -383,564 +383,214 @@
         }
       },
       "put": {
-        "tags": [
-          "Authors"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "author_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the author to update"
-          },
-          {
-            "name": "author_data",
-            "in": "body",
-            "description": "Author object to be updated",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "author_first_name": {
-                  "type": "string",
-                  "example": "Updated First Name"
-                },
-                "author_last_name": {
-                  "type": "string",
-                  "example": "Updated Last Name"
-                },
-                "author_birthdate": {
-                  "type": "string",
-                  "example": "1985"
-                },
-                "author_nationality": {
-                  "type": "string",
-                  "example": "British"
-                },
-                "author_awards": {
-                  "type": "array",
-                  "example": [
-                    "Best Author 2021"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "author_books": {
-                  "type": "array",
-                  "example": [
-                    "Updated Book Name"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "author_genres": {
-                  "type": "array",
-                  "example": [
-                    "Non-Fiction",
-                    "Science"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                }
+      "tags": ["Authors"],
+      "description": "Update an author by ID",
+      "parameters": [
+        {
+          "name": "author_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "ID of the author to update"
+        },
+        {
+          "name": "author_data",
+          "in": "body",
+          "description": "Author object to be updated",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "author_first_name": {"type": "string", "example": "Updated First Name"},
+              "author_last_name": {"type": "string", "example": "Updated Last Name"},
+              "author_birthdate": {"type": "string", "example": "1985"},
+              "author_nationality": {"type": "string", "example": "British"},
+              "author_awards": {
+                "type": "array",
+                "items": {"type": "string"},
+                "example": ["Best Author 2021"]
               },
-              "required": [
-                "author_first_name",
-                "author_last_name",
-                "author_birthdate",
-                "author_nationality",
-                "author_awards",
-                "author_books",
-                "author_genres"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Authors"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "author_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the author to delete"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/users": {
-      "get": {
-        "tags": [
-          "Users"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Users"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "user",
-            "in": "body",
-            "description": "User object to be created",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "John"
-                },
-                "lastName": {
-                  "example": "Doe"
-                },
-                "email": {
-                  "example": "johndoe@email.com"
-                },
-                "password": {
-                  "example": "Password123"
-                },
-                "birthday": {
-                  "example": "2000-01-01"
-                },
-                "role": {
-                  "example": "'user' or 'admin'"
-                },
-                "phoneNumber": {
-                  "example": "1112223333"
-                  "type": "string",
-                  "example": "Enter First Name"
-                },
-                "lastName": {
-                  "type": "string",
-                  "example": "Enter Last Name"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "Enter Email"
-                },
-                "password": {
-                  "type": "string",
-                  "example": "Enter Password."
-                },
-                "birthday": {
-                  "type": "string",
-                  "example": "1990-01-01"
-                },
-                "role": {
-                  "type": "string",
-                  "example": "'admin' or 'user'"
-                },
-                "phoneNumber": {
-                  "type": "string",
-                  "example": "9999999999"
-                }
+              "author_books": {
+                "type": "array",
+                "items": {"type": "string"},
+                "example": ["Updated Book Name"]
               },
-              "required": [
-                "firstName",
-                "lastName",
-                "email",
-                "password",
-                "birthday",
-                "role",
-                "phoneNumber"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
+              "author_genres": {
+                "type": "array",
+                "items": {"type": "string"},
+                "example": ["Non-Fiction", "Science"]
+              }
+            },
+            "required": [
+              "author_first_name",
+              "author_last_name",
+              "author_birthdate",
+              "author_nationality",
+              "author_awards",
+              "author_books",
+              "author_genres"
+            ]
           }
         }
+      ],
+      "responses": {
+        "200": {"description": "OK"},
+        "400": {"description": "Bad Request"},
+        "404": {"description": "Not Found"},
+        "500": {"description": "Internal Server Error"}
       }
     },
-    "/users/{user_id}": {
-      "get": {
-        "tags": [
-          "Users"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the user to retrieve"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+    "delete": {
+      "tags": ["Authors"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "author_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "ID of the author to delete"
         }
-      },
-      "put": {
-        "tags": [
-          "Users"
-        ],
-        "description": "Update a user by ID",
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the user to update"
-          },
-          {
-            "name": "user_data",
-            "in": "body",
-            "description": "User object to be updated",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "John"
-                },
-                "lastName": {
-                  "example": "Doe"
-                },
-                "email": {
-                  "example": "johndoe@email.com"
-                },
-                "password": {
-                  "example": "Password123"
-                },
-                "birthday": {
-                  "example": "2000-01-01"
-                },
-                "role": {
-                  "example": "'user' or 'admin'"
-                },
-                "phoneNumber": {
-                  "example": "1112223333"
-                }
-              }
-            }
-                  "type": "string",
-                  "example": "Updated First Name"
-                },
-                "lastName": {
-                  "type": "string",
-                  "example": "Updated Last Name"
-                },
-                "birthday": {
-                  "type": "string",
-                  "example": "1985-01-01"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "updated.email@example.com"
-                },
-                "password": {
-                  "type": "string",
-                  "example": "UpdatedPassword123"
-                },
-                "role": {
-                  "type": "string",
-                  "example": "admin"
-                },
-                "phoneNumber": {
-                  "type": "string",
-                  "example": "1234567890"
-                }
-              },
-              "required": [
-                "firstName",
-                "lastName",
-                "birthday",
-                "email",
-                "password",
-                "role",
-                "phoneNumber"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Users"
-        ],
-        "description": "Delete a user by ID",
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the user to delete"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
+      ],
+      "responses": {
+        "200": {"description": "OK"},
+        "400": {"description": "Bad Request"},
+        "404": {"description": "Not Found"},
+        "500": {"description": "Internal Server Error"}
+      }
+    }
+  },
+  "/users": {
+    "get": {
+      "tags": ["Users"],
+      "description": "",
+      "responses": {
+        "200": {"description": "OK"},
+        "500": {"description": "Internal Server Error"}
       }
     },
-    "/loans": {
-      "get": {
-        "tags": [
-          "Loans"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
+    "post": {
+      "tags": ["Users"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "user",
+          "in": "body",
+          "description": "User object to be created",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstName": {"type": "string", "example": "John"},
+              "lastName": {"type": "string", "example": "Doe"},
+              "email": {"type": "string", "example": "johndoe@email.com"},
+              "password": {"type": "string", "example": "Password123"},
+              "birthday": {"type": "string", "example": "2000-01-01"},
+              "role": {"type": "string", "example": "user"},
+              "phoneNumber": {"type": "string", "example": "9999999999"}
+            },
+            "required": [
+              "firstName",
+              "lastName",
+              "email",
+              "password",
+              "birthday",
+              "role",
+              "phoneNumber"
+            ]
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Loans"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "loan_data",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "user_id": {
-                  "example": "Enter User ID here"
-                },
-                "book_id": {
-                  "example": "Enter Book ID here"
-                },
-                "loanDate": {
-                  "example": "2023-06-01"
-                },
-                "dueDate": {
-                  "example": "2023-06-15"
-                },
-                "returnDate": {
-                  "example": "2023-06-07"
-                },
-                "status": {
-                  "example": "'active', 'returned', or 'overdue'"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+      ],
+      "responses": {
+        "200": {"description": "OK"},
+        "400": {"description": "Bad Request"},
+        "500": {"description": "Internal Server Error"}
+      }
+    }
+  },
+  "/users/{user_id}": {
+    "get": {
+      "tags": ["Users"],
+      "description": "",
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "ID of the user to retrieve"
         }
+      ],
+      "responses": {
+        "200": {"description": "OK"},
+        "400": {"description": "Bad Request"},
+        "404": {"description": "Not Found"},
+        "500": {"description": "Internal Server Error"}
       }
     },
-    "/loans/{loan_id}": {
-      "get": {
-        "tags": [
-          "Loans"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "loan_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the loan to retrieve"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Loans"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "loan_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the loan to update"
-          },
-          {
-            "name": "loan_data",
-            "in": "body",
-            "description": "Loan object to be updated",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "user_id": {
-                  "example": "Enter User ID here"
-                },
-                "book_id": {
-                  "example": "Enter Book ID here"
-                },
-                "loanDate": {
-                  "example": "2023-06-01"
-                },
-                "dueDate": {
-                  "example": "2023-06-15"
-                },
-                "returnDate": {
-                  "example": "2023-06-07"
-                },
-                "status": {
-                  "example": "'active', 'returned', or 'overdue'"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+    "put": {
+      "tags": ["Users"],
+      "description": "Update a user by ID",
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "ID of the user to update"
+        },
+        {
+          "name": "user_data",
+          "in": "body",
+          "description": "User object to be updated",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstName": {"type": "string", "example": "Updated First Name"},
+              "lastName": {"type": "string", "example": "Updated Last Name"},
+              "email": {"type": "string", "example": "updated.email@example.com"},
+              "password": {"type": "string", "example": "UpdatedPassword123"},
+              "birthday": {"type": "string", "example": "1985-01-01"},
+              "role": {"type": "string", "example": "admin"},
+              "phoneNumber": {"type": "string", "example": "1234567890"}
+            },
+            "required": [
+              "firstName",
+              "lastName",
+              "email",
+              "password",
+              "birthday",
+              "role",
+              "phoneNumber"
+            ]
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Loans"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "loan_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the loan to delete"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+      ],
+      "responses": {
+        "200": {"description": "OK"},
+        "400": {"description": "Bad Request"},
+        "404": {"description": "Not Found"},
+        "500": {"description": "Internal Server Error"}
+      }
+    },
+    "delete": {
+      "tags": ["Users"],
+      "description": "Delete a user by ID",
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "description": "ID of the user to delete"
         }
+      ],
+      "responses": {
+        "200": {"description": "OK"},
+        "400": {"description": "Bad Request"},
+        "404": {"description": "Not Found"},
+        "500": {"description": "Internal Server Error"}
       }
     }
   }
