@@ -535,7 +535,6 @@
               "type": "object",
               "properties": {
                 "firstName": {
-<<<<<<< ln-create-loan-collection
                   "example": "John"
                 },
                 "lastName": {
@@ -555,7 +554,6 @@
                 },
                 "phoneNumber": {
                   "example": "1112223333"
-=======
                   "type": "string",
                   "example": "Enter First Name"
                 },
@@ -582,7 +580,6 @@
                 "phoneNumber": {
                   "type": "string",
                   "example": "9999999999"
->>>>>>> main
                 }
               },
               "required": [
@@ -644,11 +641,7 @@
         "tags": [
           "Users"
         ],
-<<<<<<< ln-create-loan-collection
-        "description": "",
-=======
         "description": "Update a user by ID",
->>>>>>> main
         "parameters": [
           {
             "name": "user_id",
@@ -666,7 +659,6 @@
               "type": "object",
               "properties": {
                 "firstName": {
-<<<<<<< ln-create-loan-collection
                   "example": "John"
                 },
                 "lastName": {
@@ -689,8 +681,6 @@
                 }
               }
             }
-            
-=======
                   "type": "string",
                   "example": "Updated First Name"
                 },
@@ -729,7 +719,6 @@
                 "phoneNumber"
               ]
             }
->>>>>>> main
           }
         ],
         "responses": {
@@ -751,22 +740,14 @@
         "tags": [
           "Users"
         ],
-<<<<<<< ln-create-loan-collection
-        "description": "",
-=======
         "description": "Delete a user by ID",
->>>>>>> main
         "parameters": [
           {
             "name": "user_id",
             "in": "path",
             "required": true,
             "type": "string",
-<<<<<<< ln-create-loan-collection
-            "description": "ID of the book to delete"
-=======
             "description": "ID of the user to delete"
->>>>>>> main
           }
         ],
         "responses": {
@@ -781,7 +762,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-<<<<<<< ln-create-loan-collection
           }
         }
       }
@@ -916,8 +896,6 @@
                 }
               }
             }
-=======
->>>>>>> main
           }
         ],
         "responses": {
