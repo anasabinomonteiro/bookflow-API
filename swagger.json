@@ -533,25 +533,25 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "Enter First Name"
+                  "example": "any"
                 },
                 "lastName": {
-                  "example": "Enter Last Name"
+                  "example": "any"
                 },
                 "email": {
-                  "example": "Enter Email"
+                  "example": "any"
                 },
                 "password": {
-                  "example": "Enter Password."
+                  "example": "any"
                 },
                 "birthday": {
-                  "example": "1990-01-01"
+                  "example": "any"
                 },
                 "role": {
-                  "example": "'admin' or 'user'"
+                  "example": "any"
                 },
                 "phoneNumber": {
-                  "example": "9999999999"
+                  "example": "any"
                 }
               }
             }
@@ -600,122 +600,74 @@
           }
         }
       },
-        "put": {
-          "tags": [
-            "Users"
-          ],
-          "description": "Update a user by ID",
-          "parameters": [
-            {
-              "name": "user_id",
-              "in": "path",
-              "required": true,
-              "type": "string",
-              "description": "ID of the user to update"
-            },
-            {
-              "name": "user_data",
-              "in": "body",
-              "description": "User object to be updated",
-              "required": true,
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "firstName": {
-                    "type": "string",
-                    "example": "Updated First Name"
-                  },
-                  "lastName": {
-                    "type": "string",
-                    "example": "Updated Last Name"
-                  },
-                  "birthday": {
-                    "type": "string",
-                    "example": "1985-01-01"
-                  },
-                  "email": {
-                    "type": "string",
-                    "example": "updated.email@example.com"
-                  },
-                  "password": {
-                    "type": "string",
-                    "example": "UpdatedPassword123"
-                  },
-                  "role": {
-                    "type": "string",
-                    "example": "admin"
-                  },
-                  "phoneNumber": {
-                    "type": "string",
-                    "example": "1234567890"
-                  }
-                },
-                "required": [
-                  "firstName",
-                  "lastName",
-                  "birthday",
-                  "email",
-                  "password",
-                  "role",
-                  "phoneNumber"
-                ]
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            },
-            "400": {
-              "description": "Bad Request"
-            },
-            "404": {
-              "description": "Not Found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user to update"
           }
-        },
-        "delete": {
-          "tags": [
-            "Users"
-          ],
-          "description": "Delete a user by ID",
-          "parameters": [
-            {
-              "name": "user_id",
-              "in": "path",
-              "required": true,
-              "type": "string",
-              "description": "ID of the user to delete"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            },
-            "400": {
-              "description": "Bad Request"
-            },
-            "404": {
-              "description": "Not Found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
-      "/loans": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the book to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/loans": {
       "get": {
         "tags": [
           "Loans"
         ],
-        "description": "Retrieve all loans",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Successfully retrieved all loans"
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
@@ -726,53 +678,39 @@
         "tags": [
           "Loans"
         ],
-        "description": "Create a new loan",
+        "description": "",
         "parameters": [
           {
-            "name": "loan",
+            "name": "body",
             "in": "body",
-            "description": "Loan object to be created",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "user_id": {
-                  "type": "string",
-                  "example": "Enter User ID"
+                  "example": "any"
                 },
                 "book_id": {
-                  "type": "string",
-                  "example": "Enter Book ID"
+                  "example": "any"
                 },
                 "loanDate": {
-                  "type": "string",
-                  "example": "2023-10-01"
+                  "example": "any"
                 },
                 "dueDate": {
-                  "type": "string",
-                  "example": "2023-10-15"
+                  "example": "any"
                 },
                 "returnDate": {
-                  "type": "string",
-                  "example": "2023-10-10"
+                  "example": "any"
                 },
                 "status": {
-                  "type": "string",
-                  "example": "active"
+                  "example": "any"
                 }
-              },
-              "required": [
-                "user_id",
-                "book_id",
-                "loanDate",
-                "dueDate"
-              ]
+              }
             }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Loan successfully created"
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -788,7 +726,7 @@
         "tags": [
           "Loans"
         ],
-        "description": "Retrieve a loan by ID",
+        "description": "",
         "parameters": [
           {
             "name": "loan_id",
@@ -800,10 +738,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successfully retrieved the loan"
+            "description": "OK"
           },
           "404": {
-            "description": "Loan not found"
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -814,7 +752,7 @@
         "tags": [
           "Loans"
         ],
-        "description": "Update a loan by ID",
+        "description": "",
         "parameters": [
           {
             "name": "loan_id",
@@ -822,58 +760,17 @@
             "required": true,
             "type": "string",
             "description": "ID of the loan to update"
-          },
-          {
-            "name": "loan_data",
-            "in": "body",
-            "description": "Loan object to be updated",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "user_id": {
-                  "type": "string",
-                  "example": "Updated User ID"
-                },
-                "book_id": {
-                  "type": "string",
-                  "example": "Updated Book ID"
-                },
-                "loanDate": {
-                  "type": "string",
-                  "example": "2023-10-01"
-                },
-                "dueDate": {
-                  "type": "string",
-                  "example": "2023-10-15"
-                },
-                "returnDate": {
-                  "type": "string",
-                  "example": "2023-10-10"
-                },
-                "status": {
-                  "type": "string",
-                  "example": "returned"
-                }
-              },
-              "required": [
-                "user_id",
-                "book_id",
-                "loanDate",
-                "dueDate"
-              ]
-            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Loan successfully updated"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
           },
           "404": {
-            "description": "Loan not found"
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -884,7 +781,7 @@
         "tags": [
           "Loans"
         ],
-        "description": "Delete a loan by ID",
+        "description": "",
         "parameters": [
           {
             "name": "loan_id",
@@ -896,19 +793,19 @@
         ],
         "responses": {
           "200": {
-            "description": "Loan successfully deleted"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
           },
           "404": {
-            "description": "Loan not found"
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
           }
         }
       }
-    } 
+    }
   }
 }
