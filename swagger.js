@@ -14,7 +14,11 @@ const doc = {
         {
             name: 'Authors',
             description: 'Operations related to authors',
-        },      
+        },
+        {
+            name: 'Users',
+            description: 'Operations related to users',
+        }
     ],
 };
 const outputFile = './swagger.json';
