@@ -5,7 +5,7 @@
     "description": "API for managing bookflow operations",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "bookflow-api-fgiu.onrender.com",
   "basePath": "/",
   "tags": [
     {
@@ -26,7 +26,7 @@
     }
   ],
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
@@ -86,7 +86,7 @@
                 },
                 "book_published": {
                   "type": "string",
-                  "example": "Enter the year of piblication"
+                  "example": "Enter the year of publication"
                 },
                 "book_isbn": {
                   "type": "string",
@@ -527,12 +527,15 @@
         "description": "",
         "parameters": [
           {
-            "name": "body",
+            "name": "user",
             "in": "body",
+            "description": "User object to be created",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "firstName": {
+<<<<<<< ln-create-loan-collection
                   "example": "John"
                 },
                 "lastName": {
@@ -552,8 +555,45 @@
                 },
                 "phoneNumber": {
                   "example": "1112223333"
+=======
+                  "type": "string",
+                  "example": "Enter First Name"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Enter Last Name"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "Enter Email"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Enter Password."
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "1990-01-01"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "'admin' or 'user'"
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "9999999999"
+>>>>>>> main
                 }
-              }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "birthday",
+                "role",
+                "phoneNumber"
+              ]
             }
           }
         ],
@@ -604,7 +644,11 @@
         "tags": [
           "Users"
         ],
+<<<<<<< ln-create-loan-collection
         "description": "",
+=======
+        "description": "Update a user by ID",
+>>>>>>> main
         "parameters": [
           {
             "name": "user_id",
@@ -622,6 +666,7 @@
               "type": "object",
               "properties": {
                 "firstName": {
+<<<<<<< ln-create-loan-collection
                   "example": "John"
                 },
                 "lastName": {
@@ -645,6 +690,46 @@
               }
             }
             
+=======
+                  "type": "string",
+                  "example": "Updated First Name"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Updated Last Name"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "1985-01-01"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "updated.email@example.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "UpdatedPassword123"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "admin"
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "1234567890"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "birthday",
+                "email",
+                "password",
+                "role",
+                "phoneNumber"
+              ]
+            }
+>>>>>>> main
           }
         ],
         "responses": {
@@ -666,14 +751,22 @@
         "tags": [
           "Users"
         ],
+<<<<<<< ln-create-loan-collection
         "description": "",
+=======
+        "description": "Delete a user by ID",
+>>>>>>> main
         "parameters": [
           {
             "name": "user_id",
             "in": "path",
             "required": true,
             "type": "string",
+<<<<<<< ln-create-loan-collection
             "description": "ID of the book to delete"
+=======
+            "description": "ID of the user to delete"
+>>>>>>> main
           }
         ],
         "responses": {
@@ -688,6 +781,7 @@
           },
           "500": {
             "description": "Internal Server Error"
+<<<<<<< ln-create-loan-collection
           }
         }
       }
@@ -822,6 +916,8 @@
                 }
               }
             }
+=======
+>>>>>>> main
           }
         ],
         "responses": {
