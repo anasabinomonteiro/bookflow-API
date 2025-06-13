@@ -2,6 +2,7 @@ const router = require('express').Router();
 const books = require('../controllers/books');
 const authors = require('../controllers/authors');
 const users = require('../controllers/users');
+const loans = require('../controllers/loans');
 
 router.get('/', (req, res) => {
   res.send('Hello World!');
@@ -117,6 +118,11 @@ router.put('/authors/:author_id',
   } */
   authors.updateAuthor);
 
+  router.delete('/authors/:author_id',
+    /* #swagger.tags=["Authors"] */
+    /* #swagger.parameters['author_id'] = { description: 'ID of the author to delete', type: 'string' } */
+    authors.deleteAuthor);
+
 // User Routes
 router.get('/users',
   /* #swagger.tags=["Users"] */
@@ -170,9 +176,62 @@ router.delete('/users/:user_id',
   /* #swagger.parameters['user_id'] = { description: 'ID of the book to delete', type: 'string' } */
   users.deleteUser);
 
-router.delete('/authors/:author_id',
-  /* #swagger.tags=["Authors"] */
-  /* #swagger.parameters['author_id'] = { description: 'ID of the author to delete', type: 'string' } */
-  authors.deleteAuthor);
+// Loan Routes
+router.get('/loans',
+  /* #swagger.tags=["Loans"] */
+  loans.findAll);
+
+router.get('/loans/:loan_id',
+  /* #swagger.tags=["Loans"] */
+  /* #swagger.parameters['loan_id'] = { description: 'ID of the loan to retrieve', type: 'string' } */
+  loans.findOne);
+
+router.post('/loans',
+  /* #swagger.tags=["Loans"] */
+  /* #swagger.parameters['loan'] = {
+      in: 'body',
+      description: 'Loan object to be created',
+      required: true,
+      schema: {
+          $user_id: 'Enter First Name',
+          $book_id: 'Enter Last Name',
+          $loanDate: 1999-99-99,
+          $dueDate: 1999-99-99,
+          $returnDate: 1999-99-99,
+          $status: '"active", "overdue", or "returned"',
+      }
+  } */
+  loans.create);
+
+router.put('/loans/:loan_id',
+  /* #swagger.tags=["Loans"] */
+  /* #swagger.parameters['loan_id'] = {
+      in: 'path',
+      description: 'ID of the loan to update',
+      type: 'string',
+      required: true
+  } */
+  /* #swagger.parameters['loan_data'] = { 
+      in: 'body',
+      description: 'User object to be updated',
+      required: true,
+      schema: {
+          $user_id: 'Enter user_id',
+          $book_id: 'Enter book_id',
+          $loanDate: 1999-99-99,
+          $dueDate: 1999-99-99,
+          $returnDate: 1999-99-99,
+          $status: '"active", "overdue", or "returned"',
+      }
+  } */
+ loans.updateLoan
+);
+
+router.delete('/loans/:loan_id',
+  /* #swagger.tags=["Loans"] */
+  /* #swagger.parameters['loan_id'] = { description: 'ID of the loan to delete', type: 'string' } */
+  loans.deleteLoan
+);
+
 
 module.exports = router;
