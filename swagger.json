@@ -82,7 +82,7 @@
                 },
                 "book_published": {
                   "type": "string",
-                  "example": "Enter the year of piblication"
+                  "example": "Enter the year of publication"
                 },
                 "book_isbn": {
                   "type": "string",
@@ -523,33 +523,51 @@
         "description": "",
         "parameters": [
           {
-            "name": "body",
+            "name": "user",
             "in": "body",
+            "description": "User object to be created",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "firstName": {
+                  "type": "string",
                   "example": "Enter First Name"
                 },
                 "lastName": {
+                  "type": "string",
                   "example": "Enter Last Name"
                 },
                 "email": {
+                  "type": "string",
                   "example": "Enter Email"
                 },
                 "password": {
+                  "type": "string",
                   "example": "Enter Password."
                 },
                 "birthday": {
+                  "type": "string",
                   "example": "1990-01-01"
                 },
                 "role": {
+                  "type": "string",
                   "example": "'admin' or 'user'"
                 },
                 "phoneNumber": {
+                  "type": "string",
                   "example": "9999999999"
                 }
-              }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "birthday",
+                "role",
+                "phoneNumber"
+              ]
             }
           }
         ],
@@ -596,112 +614,112 @@
           }
         }
       },
-        "put": {
-          "tags": [
-            "Users"
-          ],
-          "description": "Update a user by ID",
-          "parameters": [
-            {
-              "name": "user_id",
-              "in": "path",
-              "required": true,
-              "type": "string",
-              "description": "ID of the user to update"
-            },
-            {
-              "name": "user_data",
-              "in": "body",
-              "description": "User object to be updated",
-              "required": true,
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "firstName": {
-                    "type": "string",
-                    "example": "Updated First Name"
-                  },
-                  "lastName": {
-                    "type": "string",
-                    "example": "Updated Last Name"
-                  },
-                  "birthday": {
-                    "type": "string",
-                    "example": "1985-01-01"
-                  },
-                  "email": {
-                    "type": "string",
-                    "example": "updated.email@example.com"
-                  },
-                  "password": {
-                    "type": "string",
-                    "example": "UpdatedPassword123"
-                  },
-                  "role": {
-                    "type": "string",
-                    "example": "admin"
-                  },
-                  "phoneNumber": {
-                    "type": "string",
-                    "example": "1234567890"
-                  }
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Update a user by ID",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user to update"
+          },
+          {
+            "name": "user_data",
+            "in": "body",
+            "description": "User object to be updated",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "Updated First Name"
                 },
-                "required": [
-                  "firstName",
-                  "lastName",
-                  "birthday",
-                  "email",
-                  "password",
-                  "role",
-                  "phoneNumber"
-                ]
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            },
-            "400": {
-              "description": "Bad Request"
-            },
-            "404": {
-              "description": "Not Found"
-            },
-            "500": {
-              "description": "Internal Server Error"
+                "lastName": {
+                  "type": "string",
+                  "example": "Updated Last Name"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "1985-01-01"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "updated.email@example.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "UpdatedPassword123"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "admin"
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "1234567890"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "birthday",
+                "email",
+                "password",
+                "role",
+                "phoneNumber"
+              ]
             }
           }
-        },
-        "delete": {
-          "tags": [
-            "Users"
-          ],
-          "description": "Delete a user by ID",
-          "parameters": [
-            {
-              "name": "user_id",
-              "in": "path",
-              "required": true,
-              "type": "string",
-              "description": "ID of the user to delete"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            },
-            "400": {
-              "description": "Bad Request"
-            },
-            "404": {
-              "description": "Not Found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Delete a user by ID",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
+    }
   }
 }
