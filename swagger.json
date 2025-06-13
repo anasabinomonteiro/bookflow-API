@@ -5,7 +5,7 @@
     "description": "API for managing bookflow operations",
     "version": "1.0.0"
   },
-  "host": "bookflow-api-fgiu.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "tags": [
     {
@@ -26,7 +26,7 @@
     }
   ],
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
@@ -86,11 +86,11 @@
                 },
                 "book_published": {
                   "type": "string",
-                  "example": "Enter the year of publication"
+                  "example": "Enter the year of piblication"
                 },
                 "book_isbn": {
                   "type": "string",
-                  "example": "Enter the ISBN"
+                  "example": "Enter the ISBN number"
                 },
                 "book_pages": {
                   "type": "number",
@@ -612,41 +612,6 @@
             "required": true,
             "type": "string",
             "description": "ID of the user to update"
-          },
-            {
-              "name": "body",
-              "in": "body",
-              "schema": {
-                "type": "object",
-              "properties": {
-            "firstName": {
-              "type": "string",
-              "example": "John"
-            },
-            "lastName": {
-              "type": "string",
-              "example": "Doe"
-            },
-            "email": {
-              "type": "string",
-              "example": "john.doe@example.com"
-            },
-            "password": {
-              "type": "string",
-              "example": "Password123"
-            },
-            "birthday": {
-              "type": "string",
-              "example": "1990-01-01"
-            },
-            "role": {
-              "type": "string",
-              "example": "user"
-            },
-            "phoneNumber": {
-              "type": "string",
-              "example": "+1234567890"
-            }
           }
         ],
         "responses": {
@@ -795,40 +760,7 @@
             "required": true,
             "type": "string",
             "description": "ID of the loan to update"
-          },
-          {
-            "name": "loan_data",
-            "in": "body",
-            "description": "Loan object to be created",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "user_id": {
-                  "type": "string",
-                  "example": "Enter user ID"
-                },
-                "book_id": {
-                  "type": "string",
-                  "example": "Enter book ID"
-                },
-                "loanDate": {
-                  "type": "string",
-                  "example": "YYYY-MM-DD"
-                },
-                "dueDate": {
-                  "type": "string",
-                  "example": "YYYY-MM-DD"
-                },
-                "returnDate": {
-                  "type": "string",
-                  "example": "YYYY-MM-DD"
-                },
-                "status": {
-                  "type": "string",
-                  "example": "returned"
-                }
-              },
+          }
         ],
         "responses": {
           "200": {
