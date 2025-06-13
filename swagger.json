@@ -1,333 +1,424 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "Bookflow API",
-    "description": "API for managing bookflow operations",
-    "version": "1.0.0"
-  },
-  "host": "bookflow-api-fgiu.onrender.com",
-  "basePath": "/",
-  "tags": [
-    {
-      "name": "Books",
-      "description": "Operations related to books"
+    "swagger": "2.0",
+    "info": {
+      "title": "Bookflow API",
+      "description": "API for managing bookflow operations",
+      "version": "1.0.0"
     },
-    {
-      "name": "Authors",
-      "description": "Operations related to authors"
-    },
-    {
-      "name": "Users",
-      "description": "Operations related to users"
-    },
-    {
-      "name": "Loans",
-      "description": "Operations related to loans"
-    }
-  ],
-  "schemes": [
-    "https"
-  ],
-  "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/books": {
-      "get": {
-        "tags": [
-          "Books"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
+    "host": "bookflow-api-fgiu.onrender.com",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Books",
+        "description": "Operations related to books"
       },
-      "post": {
-        "tags": [
-          "Books"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "book",
-            "in": "body",
-            "description": "Book object to be created",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "book_name": {
-                  "type": "string",
-                  "example": "Enter Book Name"
-                },
-                "book_author": {
-                  "type": "string",
-                  "example": "Author Name"
-                },
-                "book_genre": {
-                  "type": "string",
-                  "example": "Genre"
-                },
-                "book_summary": {
-                  "type": "string",
-                  "example": "Add a summary for the book"
-                },
-                "book_published": {
-                  "type": "string",
-                  "example": "Enter the year of publication"
-                },
-                "book_isbn": {
-                  "type": "string",
-                  "example": "Enter the ISBN number"
-                },
-                "book_pages": {
-                  "type": "number",
-                  "example": 0
-                }
-              },
-              "required": [
-                "book_name",
-                "book_author",
-                "book_genre",
-                "book_summary",
-                "book_published",
-                "book_isbn",
-                "book_pages"
-              ]
+      {
+        "name": "Authors",
+        "description": "Operations related to authors"
+      },
+      {
+        "name": "Users",
+        "description": "Operations related to users"
+      },
+      {
+        "name": "Loans",
+        "description": "Operations related to loans"
+      }
+    ],
+    "schemes": [
+      "https"
+    ],
+    "paths": {
+      "/": {
+        "get": {
+          "description": "",
+          "responses": {
+            "200": {
+              "description": "OK"
             }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/books/{book_id}": {
-      "get": {
-        "tags": [
-          "Books"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "book_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the book to retrieve"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
         }
       },
-      "put": {
-        "tags": [
-          "Books"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "book_id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the book to update"
-          },
-          {
-            "name": "book_data",
-            "in": "body",
-            "description": "Book object to be updated",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "book_name": {
-                  "type": "string",
-                  "example": "Updated Book Name"
-                },
-                "book_author": {
-                  "type": "string",
-                  "example": "Updated Author"
-                },
-                "book_genre": {
-                  "type": "string",
-                  "example": "Updated Genre"
-                },
-                "book_summary": {
-                  "type": "string",
-                  "example": "Updated summary for the book."
-                },
-                "book_published": {
-                  "type": "string",
-                  "example": "2025"
-                },
-                "book_isbn": {
-                  "type": "string",
-                  "example": "updatedisbn123456"
-                },
-                "book_pages": {
-                  "type": "number",
-                  "example": 600
-                }
-              },
-              "required": [
-                "book_name",
-                "book_author",
-                "book_genre",
-                "book_summary",
-                "book_published",
-                "book_isbn",
-                "book_pages"
-              ]
+      "/books": {
+        "get": {
+          "tags": [
+            "Books"
+          ],
+          "description": "",
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "500": {
+              "description": "Internal Server Error"
             }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+        },
+        "post": {
+          "tags": [
+            "Books"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "book",
+              "in": "body",
+              "description": "Book object to be created",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "book_name": {
+                    "type": "string",
+                    "example": "Enter Book Name"
+                  },
+                  "book_author": {
+                    "type": "string",
+                    "example": "Author Name"
+                  },
+                  "book_genre": {
+                    "type": "string",
+                    "example": "Genre"
+                  },
+                  "book_summary": {
+                    "type": "string",
+                    "example": "Add a summary for the book"
+                  },
+                  "book_published": {
+                    "type": "string",
+                    "example": "Enter the year of publication"
+                  },
+                  "book_isbn": {
+                    "type": "string",
+                    "example": "Enter the ISBN number"
+                  },
+                  "book_pages": {
+                    "type": "number",
+                    "example": 0
+                  }
+                },
+                "required": [
+                  "book_name",
+                  "book_author",
+                  "book_genre",
+                  "book_summary",
+                  "book_published",
+                  "book_isbn",
+                  "book_pages"
+                ]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
           }
         }
       },
-      "delete": {
-        "tags": [
-          "Books"
-        ],
-        "description": "",
+      "/books/{book_id}": {
+        "get": {
+          "tags": [
+            "Books"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "book_id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID of the book to retrieve"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Not Found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Books"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "book_id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID of the book to update"
+            },
+            {
+              "name": "book_data",
+              "in": "body",
+              "description": "Book object to be updated",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "book_name": {
+                    "type": "string",
+                    "example": "Updated Book Name"
+                  },
+                  "book_author": {
+                    "type": "string",
+                    "example": "Updated Author"
+                  },
+                  "book_genre": {
+                    "type": "string",
+                    "example": "Updated Genre"
+                  },
+                  "book_summary": {
+                    "type": "string",
+                    "example": "Updated summary for the book."
+                  },
+                  "book_published": {
+                    "type": "string",
+                    "example": "2025"
+                  },
+                  "book_isbn": {
+                    "type": "string",
+                    "example": "updatedisbn123456"
+                  },
+                  "book_pages": {
+                    "type": "number",
+                    "example": 600
+                  }
+                },
+                "required": [
+                  "book_name",
+                  "book_author",
+                  "book_genre",
+                  "book_summary",
+                  "book_published",
+                  "book_isbn",
+                  "book_pages"
+                ]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Books"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "book_id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID of the book to delete"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/authors": {
+        "get": {
+          "tags": [
+            "Authors"
+          ],
+          "description": "Retrieve all authors",
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Authors"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "author",
+              "in": "body",
+              "description": "Author object to be created",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "author_first_name": {
+                    "type": "string",
+                    "example": "John"
+                  },
+                  "author_last_name": {
+                    "type": "string",
+                    "example": "Doe"
+                  },
+                  "author_birthdate": {
+                    "type": "string",
+                    "example": "1980"
+                  },
+                  "author_nationality": {
+                    "type": "string",
+                    "example": "American"
+                  },
+                  "author_awards": {
+                    "type": "array",
+                    "example": [
+                      "Best Author 2020"
+                    ],
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "author_books": {
+                    "type": "array",
+                    "example": [
+                      "John Doe's Book"
+                    ],
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "author_genres": {
+                    "type": "array",
+                    "example": [
+                      "Fiction",
+                      "Mystery"
+                    ],
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "author_first_name",
+                  "author_last_name",
+                  "author_birthdate",
+                  "author_nationality",
+                  "author_awards",
+                  "author_books",
+                  "author_genres"
+                ]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/authors/{author_id}": {
+        "get": {
+          "tags": [
+            "Authors"
+          ],
+          "description": "",
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID of the author to retrieve"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Not Found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "put": {
+        "tags": ["Authors"],
+        "description": "Update an author by ID",
         "parameters": [
           {
-            "name": "book_id",
+            "name": "author_id",
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "ID of the book to delete"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
+            "description": "ID of the author to update"
           },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/authors": {
-      "get": {
-        "tags": [
-          "Authors"
-        ],
-        "description": "Retrieve all authors",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Authors"
-        ],
-        "description": "",
-        "parameters": [
           {
-            "name": "author",
+            "name": "author_data",
             "in": "body",
-            "description": "Author object to be created",
+            "description": "Author object to be updated",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "author_first_name": {
-                  "type": "string",
-                  "example": "John"
-                },
-                "author_last_name": {
-                  "type": "string",
-                  "example": "Doe"
-                },
-                "author_birthdate": {
-                  "type": "string",
-                  "example": "1980"
-                },
-                "author_nationality": {
-                  "type": "string",
-                  "example": "American"
-                },
+                "author_first_name": {"type": "string", "example": "Updated First Name"},
+                "author_last_name": {"type": "string", "example": "Updated Last Name"},
+                "author_birthdate": {"type": "string", "example": "1985"},
+                "author_nationality": {"type": "string", "example": "British"},
                 "author_awards": {
                   "type": "array",
-                  "example": [
-                    "Best Author 2020"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": {"type": "string"},
+                  "example": ["Best Author 2021"]
                 },
                 "author_books": {
                   "type": "array",
-                  "example": [
-                    "John Doe's Book"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": {"type": "string"},
+                  "example": ["Updated Book Name"]
                 },
                 "author_genres": {
                   "type": "array",
-                  "example": [
-                    "Fiction",
-                    "Mystery"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": {"type": "string"},
+                  "example": ["Non-Fiction", "Science"]
                 }
               },
               "required": [
@@ -343,23 +434,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
         }
-      }
-    },
-    "/authors/{author_id}": {
-      "get": {
-        "tags": [
-          "Authors"
-        ],
+      },
+      "delete": {
+        "tags": ["Authors"],
         "description": "",
         "parameters": [
           {
@@ -367,230 +449,149 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "ID of the author to retrieve"
+            "description": "ID of the author to delete"
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "description": "",
+        "responses": {
+          "200": {"description": "OK"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User object to be created",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {"type": "string", "example": "John"},
+                "lastName": {"type": "string", "example": "Doe"},
+                "email": {"type": "string", "example": "johndoe@email.com"},
+                "password": {"type": "string", "example": "Password123"},
+                "birthday": {"type": "string", "example": "2000-01-01"},
+                "role": {"type": "string", "example": "user"},
+                "phoneNumber": {"type": "string", "example": "9999999999"}
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "birthday",
+                "role",
+                "phoneNumber"
+              ]
+            }
           }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": ["Users"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
         }
       },
       "put": {
-      "tags": ["Authors"],
-      "description": "Update an author by ID",
-      "parameters": [
-        {
-          "name": "author_id",
-          "in": "path",
-          "required": true,
-          "type": "string",
-          "description": "ID of the author to update"
-        },
-        {
-          "name": "author_data",
-          "in": "body",
-          "description": "Author object to be updated",
-          "required": true,
-          "schema": {
-            "type": "object",
-            "properties": {
-              "author_first_name": {"type": "string", "example": "Updated First Name"},
-              "author_last_name": {"type": "string", "example": "Updated Last Name"},
-              "author_birthdate": {"type": "string", "example": "1985"},
-              "author_nationality": {"type": "string", "example": "British"},
-              "author_awards": {
-                "type": "array",
-                "items": {"type": "string"},
-                "example": ["Best Author 2021"]
+        "tags": ["Users"],
+        "description": "Update a user by ID",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user to update"
+          },
+          {
+            "name": "user_data",
+            "in": "body",
+            "description": "User object to be updated",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {"type": "string", "example": "Updated First Name"},
+                "lastName": {"type": "string", "example": "Updated Last Name"},
+                "email": {"type": "string", "example": "updated.email@example.com"},
+                "password": {"type": "string", "example": "UpdatedPassword123"},
+                "birthday": {"type": "string", "example": "1985-01-01"},
+                "role": {"type": "string", "example": "admin"},
+                "phoneNumber": {"type": "string", "example": "1234567890"}
               },
-              "author_books": {
-                "type": "array",
-                "items": {"type": "string"},
-                "example": ["Updated Book Name"]
-              },
-              "author_genres": {
-                "type": "array",
-                "items": {"type": "string"},
-                "example": ["Non-Fiction", "Science"]
-              }
-            },
-            "required": [
-              "author_first_name",
-              "author_last_name",
-              "author_birthdate",
-              "author_nationality",
-              "author_awards",
-              "author_books",
-              "author_genres"
-            ]
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "birthday",
+                "role",
+                "phoneNumber"
+              ]
+            }
           }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
         }
-      ],
-      "responses": {
-        "200": {"description": "OK"},
-        "400": {"description": "Bad Request"},
-        "404": {"description": "Not Found"},
-        "500": {"description": "Internal Server Error"}
-      }
-    },
-    "delete": {
-      "tags": ["Authors"],
-      "description": "",
-      "parameters": [
-        {
-          "name": "author_id",
-          "in": "path",
-          "required": true,
-          "type": "string",
-          "description": "ID of the author to delete"
-        }
-      ],
-      "responses": {
-        "200": {"description": "OK"},
-        "400": {"description": "Bad Request"},
-        "404": {"description": "Not Found"},
-        "500": {"description": "Internal Server Error"}
-      }
-    }
-  },
-  "/users": {
-    "get": {
-      "tags": ["Users"],
-      "description": "",
-      "responses": {
-        "200": {"description": "OK"},
-        "500": {"description": "Internal Server Error"}
-      }
-    },
-    "post": {
-      "tags": ["Users"],
-      "description": "",
-      "parameters": [
-        {
-          "name": "user",
-          "in": "body",
-          "description": "User object to be created",
-          "required": true,
-          "schema": {
-            "type": "object",
-            "properties": {
-              "firstName": {"type": "string", "example": "John"},
-              "lastName": {"type": "string", "example": "Doe"},
-              "email": {"type": "string", "example": "johndoe@email.com"},
-              "password": {"type": "string", "example": "Password123"},
-              "birthday": {"type": "string", "example": "2000-01-01"},
-              "role": {"type": "string", "example": "user"},
-              "phoneNumber": {"type": "string", "example": "9999999999"}
-            },
-            "required": [
-              "firstName",
-              "lastName",
-              "email",
-              "password",
-              "birthday",
-              "role",
-              "phoneNumber"
-            ]
+      },
+      "delete": {
+        "tags": ["Users"],
+        "description": "Delete a user by ID",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the user to delete"
           }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
         }
-      ],
-      "responses": {
-        "200": {"description": "OK"},
-        "400": {"description": "Bad Request"},
-        "500": {"description": "Internal Server Error"}
-      }
-    }
-  },
-  "/users/{user_id}": {
-    "get": {
-      "tags": ["Users"],
-      "description": "",
-      "parameters": [
-        {
-          "name": "user_id",
-          "in": "path",
-          "required": true,
-          "type": "string",
-          "description": "ID of the user to retrieve"
-        }
-      ],
-      "responses": {
-        "200": {"description": "OK"},
-        "400": {"description": "Bad Request"},
-        "404": {"description": "Not Found"},
-        "500": {"description": "Internal Server Error"}
-      }
-    },
-    "put": {
-      "tags": ["Users"],
-      "description": "Update a user by ID",
-      "parameters": [
-        {
-          "name": "user_id",
-          "in": "path",
-          "required": true,
-          "type": "string",
-          "description": "ID of the user to update"
-        },
-        {
-          "name": "user_data",
-          "in": "body",
-          "description": "User object to be updated",
-          "required": true,
-          "schema": {
-            "type": "object",
-            "properties": {
-              "firstName": {"type": "string", "example": "Updated First Name"},
-              "lastName": {"type": "string", "example": "Updated Last Name"},
-              "email": {"type": "string", "example": "updated.email@example.com"},
-              "password": {"type": "string", "example": "UpdatedPassword123"},
-              "birthday": {"type": "string", "example": "1985-01-01"},
-              "role": {"type": "string", "example": "admin"},
-              "phoneNumber": {"type": "string", "example": "1234567890"}
-            },
-            "required": [
-              "firstName",
-              "lastName",
-              "email",
-              "password",
-              "birthday",
-              "role",
-              "phoneNumber"
-            ]
-          }
-        }
-      ],
-      "responses": {
-        "200": {"description": "OK"},
-        "400": {"description": "Bad Request"},
-        "404": {"description": "Not Found"},
-        "500": {"description": "Internal Server Error"}
-      }
-    },
-    "delete": {
-      "tags": ["Users"],
-      "description": "Delete a user by ID",
-      "parameters": [
-        {
-          "name": "user_id",
-          "in": "path",
-          "required": true,
-          "type": "string",
-          "description": "ID of the user to delete"
-        }
-      ],
-      "responses": {
-        "200": {"description": "OK"},
-        "400": {"description": "Bad Request"},
-        "404": {"description": "Not Found"},
-        "500": {"description": "Internal Server Error"}
       }
     }
   }
