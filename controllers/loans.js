@@ -13,8 +13,8 @@ exports.create = (req, res) => {
 
     // Add a loan
     const loan = new Loan({
-        user_id: mongoose.Schema.Types.ObjectId(req.body.user_id),
-        book_id: mongoose.Schema.Types.ObjectId(req.body.book_id),
+        user_id: req.body.user_id,
+        book_id: req.body.book_id,
         loanDate: new Date(req.body.loanDate),
         dueDate: new Date(req.body.dueDate),
         returnDate: req.body.returnDate ? new Date(req.body.returnDate) : null,
