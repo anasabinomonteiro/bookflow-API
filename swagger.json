@@ -621,7 +621,6 @@
             "type": "string",
             "description": "ID of the user to update"
           },
-          {
             {
               "name": "body",
               "in": "body",
@@ -656,7 +655,6 @@
               "type": "string",
               "example": "+1234567890"
             }
-          }
         ],
         "responses": {
           "200": {
