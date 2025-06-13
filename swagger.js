@@ -18,6 +18,10 @@ const doc = {
         {
             name: 'Users',
             description: 'Operations related to users',
+        },
+        {
+            name: 'Loans',
+            description: 'Operations related to loans',
         }
     ],
 };
