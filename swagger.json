@@ -525,44 +525,36 @@
           "Users"
         ],
         "description": "",
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "schema": {
-                "type": "object",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
               "properties": {
-            "firstName": {
-              "type": "string",
-              "example": "John"
-            },
-            "lastName": {
-              "type": "string",
-              "example": "Doe"
-            },
-            "email": {
-              "type": "string",
-              "example": "john.doe@example.com"
-            },
-            "password": {
-              "type": "string",
-              "example": "Password123"
-            },
-            "birthday": {
-              "type": "string",
-              "example": "1990-01-01"
-            },
-            "role": {
-              "type": "string",
-              "example": "user"
-            },
-            "phoneNumber": {
-              "type": "string",
-              "example": "+1234567890"
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                },
+                "role": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                }
+              }
             }
-          },
-          "required": ["firstName", "lastName", "email", "password"]
-        }
           }
         ],
         "responses": {
@@ -723,39 +715,30 @@
         "description": "",
         "parameters": [
           {
-            "name": "loan_data",
+            "name": "body",
             "in": "body",
-            "description": "Loan object to be created",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "user_id": {
-                  "type": "string",
-                  "example": "Enter user ID"
+                  "example": "any"
                 },
                 "book_id": {
-                  "type": "string",
-                  "example": "Enter book ID"
+                  "example": "any"
                 },
                 "loanDate": {
-                  "type": "string",
-                  "example": "YYYY-MM-DD"
+                  "example": "any"
                 },
                 "dueDate": {
-                  "type": "string",
-                  "example": "YYYY-MM-DD"
+                  "example": "any"
                 },
                 "returnDate": {
-                  "type": "string",
-                  "example": "YYYY-MM-DD"
+                  "example": "any"
                 },
                 "status": {
-                  "type": "string",
-                  "example": "returned"
+                  "example": "any"
                 }
-              },
-              "required": ["user_id", "book_id", "loanDate", "dueDate"]
+              }
             }
           }
         ],
@@ -876,7 +859,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "OK"
           },
           "400": {
