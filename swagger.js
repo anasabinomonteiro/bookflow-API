@@ -1,4 +1,4 @@
-const swaggerAutogen = require('swagger-autogen')();
+const swaggerAutogen = require('swagger-autogen');
 const doc = {
     info: {
         title: 'Bookflow API',
@@ -18,6 +18,10 @@ const doc = {
         {
             name: 'Users',
             description: 'Operations related to users',
+        },
+        {
+            name: 'Loans',
+            description: 'Operations related to loans',
         }
     ],
 };
