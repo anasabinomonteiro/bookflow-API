@@ -533,25 +533,25 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "John"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "Doe"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "johndoe@email.com"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "Password123"
                 },
                 "birthday": {
-                  "example": "any"
+                  "example": "2000-01-01"
                 },
                 "role": {
-                  "example": "any"
+                  "example": "'user' or 'admin'"
                 },
                 "phoneNumber": {
-                  "example": "any"
+                  "example": "1112223333"
                 }
               }
             }
@@ -612,6 +612,39 @@
             "required": true,
             "type": "string",
             "description": "ID of the user to update"
+          },
+          {
+            "name": "user_data",
+            "in": "body",
+            "description": "User object to be updated",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "John"
+                },
+                "lastName": {
+                  "example": "Doe"
+                },
+                "email": {
+                  "example": "johndoe@email.com"
+                },
+                "password": {
+                  "example": "Password123"
+                },
+                "birthday": {
+                  "example": "2000-01-01"
+                },
+                "role": {
+                  "example": "'user' or 'admin'"
+                },
+                "phoneNumber": {
+                  "example": "1112223333"
+                }
+              }
+            }
+            
           }
         ],
         "responses": {
@@ -681,28 +714,28 @@
         "description": "",
         "parameters": [
           {
-            "name": "body",
+            "name": "loan_data",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
                 "user_id": {
-                  "example": "any"
+                  "example": "Enter User ID here"
                 },
                 "book_id": {
-                  "example": "any"
+                  "example": "Enter Book ID here"
                 },
                 "loanDate": {
-                  "example": "any"
+                  "example": "2023-06-01"
                 },
                 "dueDate": {
-                  "example": "any"
+                  "example": "2023-06-15"
                 },
                 "returnDate": {
-                  "example": "any"
+                  "example": "2023-06-07"
                 },
                 "status": {
-                  "example": "any"
+                  "example": "'active', 'returned', or 'overdue'"
                 }
               }
             }
@@ -760,6 +793,35 @@
             "required": true,
             "type": "string",
             "description": "ID of the loan to update"
+          },
+          {
+            "name": "loan_data",
+            "in": "body",
+            "description": "Loan object to be updated",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "example": "Enter User ID here"
+                },
+                "book_id": {
+                  "example": "Enter Book ID here"
+                },
+                "loanDate": {
+                  "example": "2023-06-01"
+                },
+                "dueDate": {
+                  "example": "2023-06-15"
+                },
+                "returnDate": {
+                  "example": "2023-06-07"
+                },
+                "status": {
+                  "example": "'active', 'returned', or 'overdue'"
+                }
+              }
+            }
           }
         ],
         "responses": {
