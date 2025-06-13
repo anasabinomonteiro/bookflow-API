@@ -593,6 +593,189 @@
           "500": {"description": "Internal Server Error"}
         }
       }
+    },
+    "/loans": {
+  "get": {
+    "tags": ["Loans"],
+    "description": "Retrieve all loans",
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "500": {
+        "description": "Internal Server Error"
+      }
     }
+  },
+  "post": {
+    "tags": ["Loans"],
+    "description": "Create a new loan",
+    "parameters": [
+      {
+        "name": "loan",
+        "in": "body",
+        "description": "Loan object to be created",
+        "required": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "string",
+              "example": "Enter User ID"
+            },
+            "book_id": {
+              "type": "string",
+              "example": "Enter Book ID"
+            },
+            "loanDate": {
+              "type": "string",
+              "example": "2023-01-01"
+            },
+            "dueDate": {
+              "type": "string",
+              "example": "2023-02-01"
+            },
+            "returnDate": {
+              "type": "string",
+              "example": "2023-03-01"
+            },
+            "status": {
+              "type": "string",
+              "example": "active"
+            }
+          },
+          "required": ["user_id", "book_id", "loanDate", "dueDate"]
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": "Bad Request"
+      },
+      "500": {
+        "description": "Internal Server Error"
+            }
+            }
+        }
+        },
+        "/loans/{loan_id}": {
+        "get": {
+            "tags": ["Loans"],
+            "description": "Retrieve a loan by ID",
+            "parameters": [
+            {
+                "name": "loan_id",
+                "in": "path",
+                "required": true,
+                "type": "string",
+                "description": "ID of the loan to retrieve"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "OK"
+            },
+            "404": {
+                "description": "Not Found"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+            }
+        },
+        "put": {
+            "tags": ["Loans"],
+            "description": "Update a loan by ID",
+            "parameters": [
+            {
+                "name": "loan_id",
+                "in": "path",
+                "required": true,
+                "type": "string",
+                "description": "ID of the loan to update"
+            },
+            {
+                "name": "loan_data",
+                "in": "body",
+                "description": "Loan object to be updated",
+                "required": true,
+                "schema": {
+                "type": "object",
+                "properties": {
+                    "user_id": {
+                    "type": "string",
+                    "example": "Updated User ID"
+                    },
+                    "book_id": {
+                    "type": "string",
+                    "example": "Updated Book ID"
+                    },
+                    "loanDate": {
+                    "type": "string",
+                    "example": "2023-01-01"
+                    },
+                    "dueDate": {
+                    "type": "string",
+                    "example": "2023-02-01"
+                    },
+                    "returnDate": {
+                    "type": "string",
+                    "example": "2023-03-01"
+                    },
+                    "status": {
+                    "type": "string",
+                    "example": "returned"
+                    }
+                },
+                "required": ["user_id", "book_id", "loanDate", "dueDate"]
+                }
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "OK"
+            },
+            "400": {
+                "description": "Bad Request"
+            },
+            "404": {
+                "description": "Not Found"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+            }
+        },
+        "delete": {
+            "tags": ["Loans"],
+            "description": "Delete a loan by ID",
+            "parameters": [
+            {
+                "name": "loan_id",
+                "in": "path",
+                "required": true,
+                "type": "string",
+                "description": "ID of the loan to delete"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "OK"
+            },
+            "400": {
+                "description": "Bad Request"
+            },
+            "404": {
+                "description": "Not Found"
+            },
+            "500": {
+                "description": "Internal Server Error"
+            }
+            }
+        }
+        }
   }
 }
