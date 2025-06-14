@@ -35,52 +35,35 @@ exports.create = (req, res) => {
         });
 };
 
-exports.findAll = (req, res) => {
-    // #swagger.tags=["Users"]
-    User.find(
-        {},
-        {
-            firstName: 1,
-            lastName: 1,
-            birthday: 1,
-            email: 1,
-            password: 1,
-            role: 1,
-            phoneNumber: 1,
-        }
-    )
-        .then((data) => {
-            res.send(data);
-        })
-        .catch((err) => {
-            res.status(500).send({
-                message:
-                    err.message || 'Some error occured while retrieving Users.',
-            });
+exports.findAll = async (req, res) => {
+    try {
+        const data = await User.find();
+        res.send(data);
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving users."
         });
+    }
 };
 
-// Find a single user with an id
-exports.findOne = (req, res) => {
-    // #swagger.tags=["Users"]
-    const user_id = req.params.user_id;
+exports.findOne = async (req, res) => {
+    const { user_id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(user_id)) {
-        return res.status(400).send({ message: "Invalid user ID format." });
+        return res.status(400).send({ message: 'Invalid user ID format.' });
     }
-
-    User.findById(user_id)
-        .then((data) => {
-            if (!data)
-                res
-                    .status(404)
-                    .send({ message: "No user found with id " + user_id });
-            else res.send(data);
-        })
-        .catch((err) => {
-            res.status(500).send({
-                message: "Error retrieving User with user_id " + user_id,
+    try {
+        const user = await User.findById(user_id);
+        if (!user) {
+            return res.status(404).send({
+                message: `No user found with id ${user_id}`
             });
+        }
+        res.send(user);
+    } catch (err) {
+        res.status(500).send({
+            message: `Error retrieving User with user_id ${user_id}`
         });
+    }
 };
 
 // update an existing user

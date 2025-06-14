@@ -36,48 +36,32 @@ exports.create = (req, res) => {
 };
 
 // Find all loans
-exports.findAll = (req, res) => {
-    // #swagger.tags=["Loans"]
-    Loan.find(
-        {},
-        {
-            user_id: 1,
-            book_id: 1,
-            loanDate: 1,
-            dueDate: 1,
-            returnDate: 1,
-            status: 1
-        }
-    )
-
-        .then((data) => {
-            res.send(data);
-        })
-        .catch((err) => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occured while retrieving Loans.",
-            });
+exports.findAll = async (req, res) => {
+    try {
+        const data = await Loan.find();
+        res.send(data);
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving loans."
         });
+    }
 };
 
 // Find a single loan with an id
-exports.findOne = (req, res) => {
-    // #swagger.tags=["Loans"]
-    const loan_id = req.params.loan_id;
-    Loan.findById(loan_id)
-        .then((data) => {
-            if (!data)
-                res
-                    .status(404)
-                    .send({ message: `No loan found with id ${loan_id}` });
-            else res.send(data);
-        })
-        .catch((err) => {
-            res.status(500).send({
-                message: `Error retrieving loan with id ${loan_id}`,
+exports.findOne = async (req, res) => {
+    try {
+        const loan = await Loan.findById(req.params.loan_id);
+        if (!loan) {
+            return res.status(404).send({
+                message: `No loan found with id ${req.params.loan_id}`
             });
+        }
+        res.send(loan);
+    } catch (err) {
+        res.status(500).send({
+            message: `Error retrieving Loan with loan_id ${req.params.loan_id}`
         });
+    }
 };
 
 // Update an existing loan

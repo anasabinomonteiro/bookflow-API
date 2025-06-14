@@ -35,48 +35,31 @@ exports.create = (req, res) => {
         });
 };
 
-exports.findAll = (req, res) => {
-    // #swagger.tags=["Authors"]
-    Author.find(
-        {},
-        {
-            author_first_name: 1,
-            author_last_name: 1,
-            author_birthday: 1,
-            author_nationality: 1,
-            author_awards: 1,
-            author_books: 1,
-            author_genres: 1,
-        }
-    )
-        .then((data) => {
-            res.send(data);
-        })
-        .catch((err) => {
-            res.status(500).send({
-                message:
-                    err.message || 'An error occured while retrieving Authors',
-            });
+exports.findAll = async (req, res) => {
+    try {
+        const data = await Author.find();
+        res.send(data);
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving authors."
         });
+    }
 };
 
-// Find a single author with an id
-exports.findOne = (req, res) => {
-    // #swagger.tags=["Authors"]
-    const author_id = req.params.author_id;
-    Author.findById(author_id)
-        .then((data) => {
-            if (!data)
-                res
-                    .status(404)
-                    .send({ message: "No author found with id " + author_id });
-            else res.send(data);
-        })
-        .catch((err) => {
-            res.status(500).send({
-                message: "Error retrieving Author with author_id " + author_id,
+exports.findOne = async (req, res) => {
+    try {
+        const author = await Author.findById(req.params.author_id);
+        if (!author) {
+            return res.status(404).send({
+                message: `No author found with id ${req.params.author_id}`
             });
+        }
+        res.send(author);
+    } catch (err) {
+        res.status(500).send({
+            message: `Error retrieving Author with author_id ${req.params.author_id}`
         });
+    }
 };
 
 // update an existing author
