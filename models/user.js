@@ -1,3 +1,5 @@
+const bycrypt = require('bcryptjs');
+
 module.exports = (mongoose) => {
     const UserSchema = new mongoose.Schema({
         firstName: { type: String, required: true },
@@ -44,10 +46,28 @@ module.exports = (mongoose) => {
                 validator: value => {
                     const phoneRegex = /^\+?[1-9]\d{1,14}$/; // E.164 format
                     return phoneRegex.test(value);
-                }
+                },
+                message: 'Pleae enter a valid phone number (e.g., +1234567890)'
             }
         }
+    }, {
+        timestamps: true,
     });
+
+    // Mongoose middleware
+    UserSchema.pre('save', async function (next) {
+        if (!this.isModified('password')) {
+            return next();
+        }
+        const salt = await bycrypt.genSalt(10);
+        this.password = await bycrypt.hash(this.password, salt);
+        next();
+    });
+
+    // Instance methods
+    UserSchema.methods.matchPassword = async function (enteredPassword) {
+        return await bycrypt.compare(enteredPassword, this.password);
+    };
 
     const User = mongoose.model('user', UserSchema);
     return User;
