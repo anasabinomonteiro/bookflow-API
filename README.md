@@ -1,6 +1,7 @@
 # bookflow-API
 API for managing books and users - BookFlow Project
-https://bookflow-api-fgiu.onrender.com/api-docs/ 
+The published project we used for the week5: https://bookflow-api-fgiu.onrender.com/api-docs/ 
+Actual published project: https://bookflow-api-osy4.onrender.com/api-docs/ 
 
 MongoDb = mongodb+srv://bimbola:bimbo1234@cluster0.2hqiaum.mongodb.net/bookflow
 
