@@ -35,48 +35,33 @@ exports.create = (req, res) => {
         });
 };
 
-exports.findAll = (req, res) => {
+exports.findAll = async (req, res) => {
     // #swagger.tags=["Books"]
-    Book.find(
-        {},
-        {
-            book_name: 1,
-            book_author: 1,
-            book_genre: 1,
-            book_summary: 1,
-            book_published: 1,
-            book_isbn: 1,
-            book_pages: 1,
-        }
-    )
-        .then((data) => {
-            res.send(data);
-        })
-        .catch((err) => {
-            res.status(500).send({
-                message:
-                    err.message || 'Some error occured while retrieving Books.',
-            });
+    try {
+        const data = await Book.find();
+        res.send(data);
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving books."
         });
+    }
 };
 
-// Find a single book with an id
-exports.findOne = (req, res) => {
+exports.findOne = async (req, res) => {
     // #swagger.tags=["Books"]
-    const book_id = req.params.book_id;
-    Book.findById(book_id)
-        .then((data) => {
-            if (!data)
-                res
-                    .status(404)
-                    .send({ message: "No book found with id " + book_id });
-            else res.send(data);
-        })
-        .catch((err) => {
-            res.status(500).send({
-                message: "Error retrieving Book with book_id " + book_id,
+    try {
+        const book = await Book.findById(req.params.book_id);
+        if (!book) {
+            return res.status(404).send({
+                message: `No book found with id ${req.params.book_id}`
             });
+        }
+        res.send(book);
+    } catch (err) {
+        res.status(500).send({
+            message: `Error retrieving Book with book_id ${req.params.book_id}`
         });
+    }
 };
 
 // update an existing book
