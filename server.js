@@ -22,6 +22,9 @@ db.mongoose
     process.exit();
   });
 
+//Trust and create cookie on Render
+app.set('trust proxy', 1);
+
 // Express session configuration - 0auth
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -38,26 +41,27 @@ app.use(session({
     maxAge: 1000 * 60 * 60, // 1 hour
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-    sameSite: 'lax' // Protection CSRF (Cross-Site Request Forgery)
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'  // 'none' for cross-site in production (secure: true)
   }
 }));
 
-app
-  .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-    );
-    res.setHeader(
-      'Access-Control-Allow-Methods',
-      'GET, POST, PUT, DELETE, OPTIONS'
-    );
-    next();
-  })
-  .use(cors())
-  .use(express.json())
-  .use(express.urlencoded({ extended: true }))
+app.use(cors({
+    credentials: true,
+    origin: (origin, callback) => {
+        const allowedOrigins = [
+            'http://localhost:3000', // local
+            'https://bookflow-api-osy4.onrender.com' // API on Render
+          ];
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })));
 
 // Authentication routes
 app.use('/api/auth', require('./routes/authRoutes'));
